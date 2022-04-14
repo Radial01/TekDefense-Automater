@@ -223,14 +223,14 @@ class SiteDetailOutput(object):
                                 # if it's just a string we don't want it output like a list
                                 if isinstance(siteimpprop[index], basestring):
                                     if "" + site.ReportStringForResult[index] + " " + str(siteimpprop) != laststring:
-                                        print "" + site.ReportStringForResult[index] + " " + str(siteimpprop).replace('www.', 'www[.]').replace('http', 'hxxp')
+                                        print "" + site.ReportStringForResult[index] + " " + str(siteimpprop).replace('www.', 'www[.]').replace('http', 'hxxp').replace('{', '').replace('},', '\n').replace('"date": ', '\n\t\tDate: ').replace('"positives": ', '\n\t\tFiles Positive for Malware: ').replace('"total": ', '\n\t\tTotal Files: ').replace('"sha256": ', '\n\t\tSHA256: ')
                                         laststring = "" + site.ReportStringForResult[index] + " " + str(siteimpprop)
                                 # must be a list since it failed the isinstance check on string
                                 else:
                                     laststring = ""
                                     for siteresult in siteimpprop[index]:
                                         if "" + site.ReportStringForResult[index] + " " + str(siteresult) != laststring:
-                                            print "" + site.ReportStringForResult[index] + " " + str(siteresult).replace('www.', 'www[.]').replace('http', 'hxxp')
+                                            print "" + site.ReportStringForResult[index] + " " + str(siteresult).replace('www.', 'www[.]').replace('http', 'hxxp').replace('{', '').replace('},', '\n').replace('"date": ', '\n\t\tDate: ').replace('"positives": ', '\n\t\tFiles Positive for Malware: ').replace('"total": ', '\n\t\tTotal Files: ').replace('"sha256": ', '\n\t\tSHA256: ')
                                             laststring = "" + site.ReportStringForResult[index] + " " + str(siteresult)
                 else:  # this is a singlesite
                     siteimpprop = site.getImportantProperty(0)
