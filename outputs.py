@@ -143,27 +143,27 @@ class SiteDetailOutput(object):
                                     sourceurlhasnoreturn = False
 
                         if sourceurlhasnoreturn:
-                            print '[+] ' + site.SourceURL + ' No results found'
+                            #print '[+] ' + site.SourceURL + ' No results found'
                             break
                         else:
                             if siteimpprop is None or len(siteimpprop) == 0:
-                                print "No results in the " + site.FriendlyName[index] + " category"
+                                pass
                             else:
                                 if siteimpprop[index] is None or len(siteimpprop[index]) == 0:
-                                    print site.ReportStringForResult[index] + ' No results found'
+                                    pass
                                 else:
                                     laststring = ""
                                     # if it's just a string we don't want it output like a list
                                     if isinstance(siteimpprop[index], basestring):
                                         if "" + site.ReportStringForResult[index] + " " + str(siteimpprop) != laststring:
-                                            print "" + site.ReportStringForResult[index] + " " + str(siteimpprop).replace('www.', 'www[.]').replace('http', 'hxxp')
+                                            print "" + site.ReportStringForResult[index] + " " + str(siteimpprop).replace('www.', 'www[.]').replace('http', 'hxxp').replace('http', 'hxxp').replace('{', '').replace('},', '\n').replace('"date": ', '\n    -Date: ').replace('"positives": ', '\n    -Files Positive for Malware: ').replace('"total": ', '\n    -Total Files: ').replace('"sha256": ', '\n    -SHA256: ')
                                             laststring = "" + site.ReportStringForResult[index] + " " + str(siteimpprop)
                                     # must be a list since it failed the isinstance check on string
                                     else:
                                         laststring = ""
                                         for siteresult in siteimpprop[index]:
                                             if "" + site.ReportStringForResult[index] + " " + str(siteresult) != laststring:
-                                                print "" + site.ReportStringForResult[index] + " " + str(siteresult).replace('www.', 'www[.]').replace('http', 'hxxp')
+                                                print "" + site.ReportStringForResult[index] + " " + str(siteresult).replace('www.', 'www[.]').replace('http', 'hxxp').replace('http', 'hxxp').replace('{', '').replace('},', '\n').replace('"date": ', '\n    -Date: ').replace('"positives": ', '\n    -Files Positive for Malware: ').replace('"total": ', '\n    -Total Files: ').replace('"sha256": ', '\n    -SHA256: ')
                                                 laststring = "" + site.ReportStringForResult[index] + " " + str(siteresult)
                 else:#this is a singlesite
                     siteimpprop = site.getImportantProperty(0)
@@ -171,20 +171,20 @@ class SiteDetailOutput(object):
                         print "\n**_ Results found for: " + site.Target + " _**"
                         target = site.Target
                     if siteimpprop is None or len(siteimpprop)==0:
-                        print '[+] ' + site.FriendlyName + ' No results found'
+                        pass
                     else:
                         laststring = ""
                         #if it's just a string we don't want it output like a list
                         if isinstance(siteimpprop, basestring):
                             if "" + site.ReportStringForResult + " " + str(siteimpprop) != laststring:
-                                print "" + site.ReportStringForResult + " " + str(siteimpprop).replace('www.', 'www[.]').replace('http', 'hxxp')
+                                print "" + site.ReportStringForResult + " " + str(siteimpprop).replace('www.', 'www[.]').replace('http', 'hxxp').replace('http', 'hxxp').replace('{', '').replace('},', '\n').replace('"date": ', '\n    -Date: ').replace('"positives": ', '\n    -Files Positive for Malware: ').replace('"total": ', '\n    -Total Files: ').replace('"sha256": ', '\n    -SHA256: ')
                                 laststring = "" + site.ReportStringForResult + " " + str(siteimpprop)
                         #must be a list since it failed the isinstance check on string
                         else:
                             laststring = ""
                             for siteresult in siteimpprop:
                                 if "" + site.ReportStringForResult + " " + str(siteresult) != laststring:
-                                    print "" + site.ReportStringForResult + " " + str(siteresult).replace('www.', 'www[.]').replace('http', 'hxxp')
+                                    print "" + site.ReportStringForResult + " " + str(siteresult).replace('www.', 'www[.]').replace('http', 'hxxp').replace('http', 'hxxp').replace('{', '').replace('},', '\n').replace('"date": ', '\n    -Date: ').replace('"positives": ', '\n    -Files Positive for Malware: ').replace('"total": ', '\n    -Total Files: ').replace('"sha256": ', '\n    -SHA256: ')
                                     laststring = "" + site.ReportStringForResult + " " + str(siteresult)
         else:
             pass
@@ -217,20 +217,20 @@ class SiteDetailOutput(object):
                             print "No results in the " + site.FriendlyName[index] + " category"
                         else:
                             if siteimpprop[index] is None or len(siteimpprop[index]) == 0:
-                                print site.ReportStringForResult[index] + ' No results found'
+				pass
                             else:
                                 laststring = ""
                                 # if it's just a string we don't want it output like a list
                                 if isinstance(siteimpprop[index], basestring):
                                     if "" + site.ReportStringForResult[index] + " " + str(siteimpprop) != laststring:
-                                        print "" + site.ReportStringForResult[index] + " " + str(siteimpprop).replace('www.', 'www[.]').replace('http', 'hxxp').replace('{', '').replace('},', '\n').replace('"date": ', '\n\t\tDate: ').replace('"positives": ', '\n\t\tFiles Positive for Malware: ').replace('"total": ', '\n\t\tTotal Files: ').replace('"sha256": ', '\n\t\tSHA256: ')
+                                        print "" + site.ReportStringForResult[index] + " " + str(siteimpprop).replace('www.', 'www[.]').replace('http', 'hxxp').replace('http', 'hxxp').replace('{', '').replace('},', '\n').replace('"date": ', '\n    -Date: ').replace('"positives": ', '\n    -Files Positive for Malware: ').replace('"total": ', '\n    -Total Files: ').replace('"sha256": ', '\n    -SHA256: ')
                                         laststring = "" + site.ReportStringForResult[index] + " " + str(siteimpprop)
                                 # must be a list since it failed the isinstance check on string
                                 else:
                                     laststring = ""
                                     for siteresult in siteimpprop[index]:
                                         if "" + site.ReportStringForResult[index] + " " + str(siteresult) != laststring:
-                                            print "" + site.ReportStringForResult[index] + " " + str(siteresult).replace('www.', 'www[.]').replace('http', 'hxxp').replace('{', '').replace('},', '\n').replace('"date": ', '\n\t\tDate: ').replace('"positives": ', '\n\t\tFiles Positive for Malware: ').replace('"total": ', '\n\t\tTotal Files: ').replace('"sha256": ', '\n\t\tSHA256: ')
+                                            print "" + site.ReportStringForResult[index] + " " + str(siteresult).replace('www.', 'www[.]').replace('http', 'hxxp').replace('http', 'hxxp').replace('{', '').replace('},', '\n').replace('"date": ', '\n    -Date: ').replace('"positives": ', '\n    -Files Positive for Malware: ').replace('"total": ', '\n    -Total Files: ').replace('"sha256": ', '\n    -SHA256: ')
                                             laststring = "" + site.ReportStringForResult[index] + " " + str(siteresult)
                 else:  # this is a singlesite
                     siteimpprop = site.getImportantProperty(0)
@@ -238,20 +238,20 @@ class SiteDetailOutput(object):
                         print "\n____________________     Results found for: " + site.Target + "     ____________________"
                         target = site.Target
                     if siteimpprop is None or len(siteimpprop) == 0:
-                        print "No results found in the " + site.FriendlyName
+			pass
                     else:
                         laststring = ""
                         # if it's just a string we don't want it output like a list
                         if isinstance(siteimpprop, basestring):
                             if "" + site.ReportStringForResult + " " + str(siteimpprop) != laststring:
-                                print "" + site.ReportStringForResult + " " + str(siteimpprop).replace('www.', 'www[.]').replace('http', 'hxxp')
+                                print "" + site.ReportStringForResult + " " + str(siteimpprop).replace('www.', 'www[.]').replace('http', 'hxxp').replace('http', 'hxxp').replace('{', '').replace('},', '\n').replace('"date": ', '\n-    Date: ').replace('"positives": ', '\n    -Files Positive for Malware: ').replace('"total": ', '\n    -Total Files: ').replace('"sha256": ', '\n    -SHA256: ')
                                 laststring = "" + site.ReportStringForResult + " " + str(siteimpprop)
                         # must be a list since it failed the isinstance check on string
                         else:
                             laststring = ""
                             for siteresult in siteimpprop:
                                 if "" + site.ReportStringForResult + " " + str(siteresult) != laststring:
-                                    print "" + site.ReportStringForResult + " " + str(siteresult).replace('www.', 'www[.]').replace('http', 'hxxp')
+                                    print "" + site.ReportStringForResult + " " + str(siteresult).replace('www.', 'www[.]').replace('http', 'hxxp').replace('http', 'hxxp').replace('{', '').replace('},', '\n').replace('"date": ', '\n-    Date: ').replace('"positives": ', '\n    -Files Positive for Malware: ').replace('"total": ', '\n    -Total Files: ').replace('"sha256": ', '\n    -SHA256: ')
                                     laststring = "" + site.ReportStringForResult + " " + str(siteresult)
         else:
             pass
